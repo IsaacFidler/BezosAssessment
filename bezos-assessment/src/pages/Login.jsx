@@ -36,17 +36,11 @@ const Login = (props) => {
         {
           setLoginWarning('The Detail you entered were incorrect')
           sessionStorage.setItem('isAuth', 'false')
-          console.log('hey')
           console.log(error)
         }
       }
 
       makeGetRequest();
-
-      // setLoginWarning('correct details!')
-      // sessionStorage.setItem('isAuth', 'true')
-      // props.setIsAuth(true)
-      // sessionStorage.setItem('token', "c6364d40-df48-4514-8ef1-0d11c0b5e6e7")
 
     }
   }

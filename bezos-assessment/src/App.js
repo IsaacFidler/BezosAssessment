@@ -45,10 +45,13 @@ function App () {
         <div className='App'>
           <Header setIsAuth={setIsAuth} isAuth={isAuth} />
           <Route exact path="/">
-
-            <Login setIsAuth={setIsAuth} />
-
+            {isAuth ? <Redirect to='/orders' /> :
+              <Login setIsAuth={setIsAuth} />
+            }
           </Route>
+          <ProtectedRoutes exact path="/orders" component={Orders} isAuth={isAuth} />
+          <ProtectedRoutes path="/order/:id" component={OrderDetail} isAuth={isAuth} />
+
 
         </div>
       </Router>

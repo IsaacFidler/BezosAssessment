@@ -9,7 +9,10 @@ import {
 import {useHistory} from "react-router-dom";
 import '../styles/Header.css'
 
-const Header = () => {
+const Header = (props) => {
+
+  const history = useHistory();
+
   return (
     <AppBar position="static" className='app-bar'>
       <CssBaseline />
@@ -18,7 +21,19 @@ const Header = () => {
           Bezos
         </Typography>
         <div className='navlinks'>
-
+          {sessionStorage.getItem('isAuth') == 'true' ?
+            < Button
+              onClick={() => {
+                props.setIsAuth(false)
+                sessionStorage.setItem('isAuth', 'false')
+                sessionStorage.setItem('token', '')
+                history.push("/");
+              }}
+              variant="contained"
+              color='secondary'
+            >
+              Logout
+            </Button> : <div></div>}
         </div>
       </Toolbar>
     </AppBar >
