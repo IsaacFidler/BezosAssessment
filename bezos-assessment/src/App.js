@@ -36,14 +36,12 @@ const theme = createTheme({
 function App () {
 
   const [isAuth, setIsAuth] = useState(false);
-  const isAuthVar = sessionStorage.getItem('isAuth')
-
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme} className='container'>
       <Router>
         <div className='App'>
-          <Header setIsAuth={setIsAuth} isAuth={isAuth} />
+          <Header className='header' setIsAuth={setIsAuth} isAuth={isAuth} />
           <Route exact path="/">
             {isAuth ? <Redirect to='/orders' /> :
               <Login setIsAuth={setIsAuth} />

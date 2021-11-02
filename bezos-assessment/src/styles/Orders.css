@@ -9,4 +9,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-y: hidden;
+}
+
+.my-table{
+  height: 700px;
 }

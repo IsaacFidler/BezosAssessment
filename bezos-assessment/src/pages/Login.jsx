@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {TextField, Button, Typography, Paper, Grid} from '@material-ui/core'
+import {TextField, Button, Typography, Paper, Grid, Box} from '@material-ui/core'
 import '../styles/Login.css'
 const axios = require('axios');
 
@@ -48,7 +48,7 @@ const Login = (props) => {
     <div className='login-container'>
 
       <Paper elevation={10} className='login-form-continer' >
-        <Typography variant="h2" component="div" gutterBottom>
+        <Typography className='signin-text' ariant="subtitle1" component="div" gutterBottom>
           Sign in
         </Typography>
         <form className='login-form' onSubmit={handleSubmit}>
@@ -60,29 +60,34 @@ const Login = (props) => {
             label="Username"
             placeholder="Enter username"
             variant="outlined"
-            fullWidth required
+            fullWidth
+            required
 
           />
+
           <TextField
             className='text-input'
+            mt={20}
             onChange={e => setPassword(e.target.value)}
             color="secondary"
-            id="outlined-basic"
             label="Password"
             placeholder="Enter password"
             variant="outlined"
-            fullWidth required
+            fullWidth
+            required
 
           />
-          <Button
-            type='submit'
-            color="primary"
-            fullWidth
-            variant="contained"
-
+          <Box
+            className='login-button'
           >
-            Login
-          </Button>
+            <Button
+              type='submit'
+              color="primary"
+              variant="contained"
+            >
+              Login
+            </Button>
+          </Box>
         </form>
         <Typography variant="h4" component="div" gutterBottom>
           {loginWarning}

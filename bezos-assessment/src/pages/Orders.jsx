@@ -12,17 +12,14 @@ const axios = require('axios');
 
 const Orders = () => {
 
-
-
-
   return (
     <Box className='orders-container'>
       <Box className='table-container'>
-        <Typography variant="h2" component="div" gutterBottom>
+        <Typography variant="subtitle1" component="div" gutterBottom>
           All orders
         </Typography>
         {/* <div className="topics"> */}
-        <MyTable />
+        <MyTable className='my-table' />
       </Box >
     </Box>
   );

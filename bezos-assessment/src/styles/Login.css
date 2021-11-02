@@ -20,13 +20,12 @@
 }
 
 .text-input {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   width: 100%;
 
 }
 
 .login-form{
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -34,10 +33,18 @@
   width:60%;
 }
 
+.login-button{
+
+  margin: 20px;
+}
 .app-bar{
   margin-bottom: 50px;
 }
 
 .logo{
   padding: 25px;
+}
+
+.signin-text{
+  margin-bottom: 50px;
 }

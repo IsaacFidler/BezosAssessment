@@ -2,3 +2,18 @@
   width: 90%;
 }
 
+.date-picker{
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border:1px solid rgb(224, 224, 224);
+  border-radius: 5px;
+  margin-bottom: 20px;
+
+}
+
+.date-container{
+  margin: 20px;
+}

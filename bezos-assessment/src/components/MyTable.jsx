@@ -7,19 +7,28 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Table
+  Table,
+  Box,
+  TextField,
+  Grid
 } from "@material-ui/core";
-
+import DateTimePicker from '@mui/lab/DateTimePicker';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import DateFnsUtils from '@date-io/date-fns'
 import {Link} from 'react-router-dom'
-
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import '../styles/Table.css'
 
 
 const MyTable = () => {
 
   const [orders, setOrders] = useState([]);
-
-
+  const [date1, setDate1] = React.useState(new Date('2014-08-18T21:11:54'));
+  const [date2, setDate2] = React.useState(new Date('2014-08-18T21:11:54'));
+  console.log(new Date('2014-08-18T21:11:54'))
+  // const handleChange = (newValue) => {
+  //   setValue(newValue);
+  // };
   useEffect(() => {
     console.log('useeffect is running')
     const getOrders = () => {
@@ -40,38 +49,60 @@ const MyTable = () => {
         .catch(error => console.log('error', error));
     }
 
-
     getOrders()
   }, [])
-  console.log(orders[0])
 
   return (
-    <TableContainer className='table-container' component={Paper}>
-      <Table aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell >Order Number</TableCell>
-            <TableCell >Order Date</TableCell>
-            <TableCell >Status</TableCell>
-            <TableCell >Dispatch Date </TableCell>
-            <TableCell >Courier Service </TableCell>
-            <TableCell >Courier Status </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-
-          {orders.length < 1 ? <div>loading</div> : orders.map((row) => (
-            <TableRow key={row.name} component={Link} to={`/order/${row.id}`}>
-              <TableCell >{row.order_number}</TableCell>
-              <TableCell >{row.order_date}</TableCell>
-              <TableCell >{row.status}</TableCell>
-              <TableCell >{row.courier_service}</TableCell>
-              <TableCell >{row.courier_status}</TableCell>
+    <Box className='table-box-container'>
+      <Box className='date-picker'>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <Box className='date-container'>
+            <DateTimePicker
+              label="Date&Time picker"
+              value={date1}
+              // onChange={handleChange}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </Box>
+          <Box className='date-container'>
+            <DateTimePicker
+              label="Date&Time picker"
+              value={date2}
+              // onChange={e => set(e.target.value)}
+              onChange={e => console.log(e)}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </Box>
+        </LocalizationProvider>
+      </Box>
+      <TableContainer className='table-container' component={Paper}>
+        <Table aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell >Order Number</TableCell>
+              <TableCell >Order Date</TableCell>
+              <TableCell >Status</TableCell>
+              <TableCell >Dispatch Date </TableCell>
+              <TableCell >Courier Service </TableCell>
+              <TableCell >Courier Status </TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer >
+          </TableHead>
+          <TableBody>
+
+            {orders.length < 1 ? <div>loading</div> : orders.map((row) => (
+              <TableRow key={row.name} component={Link} to={`/order/${row.order_number}`}>
+                <TableCell >{row.order_number}</TableCell>
+                <TableCell >{row.order_date}</TableCell>
+                <TableCell >{row.status}</TableCell>
+                <TableCell >{row.despatch_date}</TableCell>
+                <TableCell >{row.courier_service}</TableCell>
+                <TableCell >{row.courier_status}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer >
+    </Box >
   );
 }
 
