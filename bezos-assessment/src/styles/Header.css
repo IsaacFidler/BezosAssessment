@@ -1,0 +1,22 @@
+  .navlinks {
+    margin-left: auto;
+  order: 2;
+
+  }
+
+ .logo {
+    flexGrow:1;
+    cursor: pointer;
+  }
+
+  .link {
+    textDecoration: none;
+    color: white;
+    fontSize: 20px;
+    marginLeft: 20px;
+  }
+
+  .toolbar {
+    display: flex;
+
+  }

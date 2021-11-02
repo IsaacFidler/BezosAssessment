@@ -1,0 +1,43 @@
+.login-form-continer {
+  display: flex;
+  flex-direction: column;
+  width : 60%;
+  padding: 20px;
+  height: 600px;
+  align-items: center;
+}
+
+.login-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.login-header{
+  width: 100%
+}
+
+.text-input {
+  margin-bottom: 20px;
+  width: 100%;
+
+}
+
+.login-form{
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width:60%;
+}
+
+.app-bar{
+  margin-bottom: 50px;
+}
+
+.logo{
+  padding: 25px;
+}
