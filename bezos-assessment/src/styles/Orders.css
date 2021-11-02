@@ -1,0 +1,12 @@
+.table-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.orders-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
