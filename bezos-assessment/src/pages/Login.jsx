@@ -1,27 +1,52 @@
 import React, {useState, useEffect} from 'react';
-
 import {TextField, Button, Typography, Paper, Grid} from '@material-ui/core'
-
 import '../styles/Login.css'
+const axios = require('axios');
 
 const Login = (props) => {
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [loginWarning, setLoginWarning] = useState('')
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    if (username !== 'test' || password !== 'an insecure password')
+
     {
-      setLoginWarning('wrong details!')
+      async function makeGetRequest () {
+        try
+        {
+          //send form information
+          let payload = {username: username, password: password};
+
+          let res = await axios.post('https://interview-api.staging.bezos.ai/v1/login', payload);
+
+          let data = res.data;
+          setLoginWarning('correct details!')
+          sessionStorage.setItem('isAuth', 'true')
+          props.setIsAuth(true)
+
+          // localStorage only takes strings as data
+          const token = String(data)
+          console.log(token)
+          sessionStorage.setItem('token', token)
 
 
-    } else
-    {
-      setLoginWarning('correct details!')
-      sessionStorage.setItem('isAuth', 'true')
-      props.setIsAuth(true)
-      sessionStorage.setItem('token', "c6364d40-df48-4514-8ef1-0d11c0b5e6e7")
+        } catch (error)
+        {
+          setLoginWarning('The Detail you entered were incorrect')
+          sessionStorage.setItem('isAuth', 'false')
+          console.log('hey')
+          console.log(error)
+        }
+      }
+
+      makeGetRequest();
+
+      // setLoginWarning('correct details!')
+      // sessionStorage.setItem('isAuth', 'true')
+      // props.setIsAuth(true)
+      // sessionStorage.setItem('token', "c6364d40-df48-4514-8ef1-0d11c0b5e6e7")
 
     }
   }
