@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {TextField, Button, Typography, Paper, Grid, Box} from '@material-ui/core'
+import React, {useState} from 'react';
+import {TextField, Button, Typography, Paper, Box} from '@material-ui/core'
 import '../styles/Login.css'
 const axios = require('axios');
 
@@ -34,7 +34,7 @@ const Login = (props) => {
 
         } catch (error)
         {
-          setLoginWarning('The Detail you entered were incorrect')
+          setLoginWarning('The Details you entered were incorrect')
           sessionStorage.setItem('isAuth', 'false')
           console.log(error)
         }
@@ -52,31 +52,41 @@ const Login = (props) => {
           Sign in
         </Typography>
         <form className='login-form' onSubmit={handleSubmit}>
-          <TextField
-            className='text-input'
-            onChange={e => setUsername(e.target.value)}
-            color="secondary"
-            id="outlined-basic"
-            label="Username"
-            placeholder="Enter username"
-            variant="outlined"
-            fullWidth
-            required
+          <Box
+            className='login-button'
+          >
+            <TextField
+              className='text-input'
+              onChange={e => setUsername(e.target.value)}
+              color="secondary"
+              id="outlined-basic"
+              label="Username"
+              placeholder="Enter username"
+              variant="outlined"
+              fullWidth
+              required
 
-          />
+            />
+          </Box>
+          <Box
+            className='login-button'
+          >
+            <TextField
+              className='text-input'
+              mt={20}
+              onChange={e => setPassword(e.target.value)}
+              color="secondary"
+              label="Password"
+              placeholder="Enter password"
+              variant="outlined"
+              type='password'
+              fullWidth
+              required
 
-          <TextField
-            className='text-input'
-            mt={20}
-            onChange={e => setPassword(e.target.value)}
-            color="secondary"
-            label="Password"
-            placeholder="Enter password"
-            variant="outlined"
-            fullWidth
-            required
+            />
+          </Box>
 
-          />
+
           <Box
             className='login-button'
           >
@@ -89,7 +99,7 @@ const Login = (props) => {
             </Button>
           </Box>
         </form>
-        <Typography variant="h4" component="div" gutterBottom>
+        <Typography className='login-warning' variant="subtitle1" component="div" gutterBottom>
           {loginWarning}
         </Typography>
       </Paper>

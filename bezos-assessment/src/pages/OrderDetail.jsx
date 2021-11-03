@@ -9,35 +9,9 @@ import {
 import {makeStyles} from '@material-ui/core/styles';
 
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
   Link,
-  Redirect,
   useParams,
-  withRouter
 } from 'react-router-dom'
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    margin: 'auto',
-    maxWidth: 500,
-  },
-  image: {
-    width: 128,
-    height: 128,
-  },
-  img: {
-    margin: 'auto',
-    display: 'block',
-    maxWidth: '100%',
-    maxHeight: '100%',
-  },
-}));
 
 const theme = createTheme({
   palette: {
@@ -55,7 +29,6 @@ const Orderdetail = () => {
   const [orderDetail, setOrderDetail] = useState({})
 
   useEffect(() => {
-    console.log('useeffect is running')
     const getOrders = () => {
       const token = String(sessionStorage.getItem('token'))
       var url = `https://interview-api.staging.bezos.ai/v1/detail/${id}`;
@@ -90,6 +63,8 @@ const Orderdetail = () => {
           variant="contained"
           component={Link} to={'/orders'}
         >Back to all orders</Button>
+
+
         {/* {!orderDetail ? <span> Loading </span> :
           <div>
             <h3>ID: {id}</h3>

@@ -1,8 +1,8 @@
 import React from 'react';
 import {Route, Redirect} from 'react-router-dom';
 
-const Protectedroutes = ({isAuth: isAuth, component: Component, ...rest}) => {
-  console.log(isAuth)
+const Protectedroutes = ({isAuth, component: Component, ...rest}) => {
+
   return (
     <Route {...rest} render={(props) => {
       if (sessionStorage.getItem('isAuth') == 'true')

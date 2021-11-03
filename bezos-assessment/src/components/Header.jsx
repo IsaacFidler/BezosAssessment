@@ -21,7 +21,7 @@ const Header = (props) => {
           Bezos
         </Typography>
         <div className='navlinks'>
-          {sessionStorage.getItem('isAuth') == 'true' ?
+          {sessionStorage.getItem('isAuth') === 'true' ?
             < Button
               onClick={() => {
                 props.setIsAuth(false)

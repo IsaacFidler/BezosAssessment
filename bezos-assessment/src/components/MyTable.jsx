@@ -10,11 +10,9 @@ import {
   Table,
   Box,
   TextField,
-  Grid
 } from "@material-ui/core";
 import DateTimePicker from '@mui/lab/DateTimePicker';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import DateFnsUtils from '@date-io/date-fns'
 import {Link} from 'react-router-dom'
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import '../styles/Table.css'
@@ -30,7 +28,6 @@ const MyTable = () => {
   //   setValue(newValue);
   // };
   useEffect(() => {
-    console.log('useeffect is running')
     const getOrders = () => {
       const token = String(sessionStorage.getItem('token'))
       var url = "https://interview-api.staging.bezos.ai/v1/summary/2021-10-24T12:00:00.000Z/2021-10-30T12:00:00.000Z";
